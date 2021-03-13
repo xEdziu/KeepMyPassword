@@ -22,13 +22,16 @@ import me.goral.keepmypassword.R;
 public class LoggedMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    public String username;
+    public String uid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logged_main);
         Bundle bundle = getIntent().getExtras();
-        String username = bundle.getString("username");
+        username = bundle.getString("username");
+        uid = bundle.getString("uid");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,8 +57,10 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_passwords:
+                PasswordsFragment pf = new PasswordsFragment();
+                pf.setArguments(generateFragmentBundle(username, uid));
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PasswordsFragment()).commit();
+                pf).commit();
                 break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -84,5 +89,12 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
         else Toast.makeText(getApplicationContext(), "To log out, use button in the menu", Toast.LENGTH_LONG).show();
+    }
+
+    private Bundle generateFragmentBundle(String username, String uid){
+        Bundle bundle = new Bundle();
+        bundle.putString("username", username);
+        bundle.putString("username", uid);
+        return bundle;
     }
 }

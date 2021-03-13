@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
     private String databaseUser = null;
+    private String databaseId = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,9 +63,12 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void processFinish(String output) {
                         if (!output.equals("Incorrect data!")){
-                            databaseUser = output;
+                            String[] result = output.split(";");
+                            databaseId = result[0];
+                            databaseUser = result[1];
                             Intent intent = new Intent(Login.this, LoggedMain.class);
                             intent.putExtra("username", databaseUser);
+                            intent.putExtra("uid", databaseId);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
@@ -90,6 +94,7 @@ public class Login extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Intent intent = new Intent(Login.this, LoggedMain.class);
                 intent.putExtra("username", databaseUser);
+                intent.putExtra("uid", databaseId);
                 startActivity(intent);
             }
 
@@ -118,6 +123,7 @@ public class Login extends AppCompatActivity {
                                 " Please login using username and password", Toast.LENGTH_LONG).show();
                         else {
                             databaseUser = result[1];
+                            databaseId = result[2];
                         }
                     }
                 });
