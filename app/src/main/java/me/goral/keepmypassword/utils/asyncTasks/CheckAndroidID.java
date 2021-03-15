@@ -19,7 +19,7 @@ public class CheckAndroidID extends AsyncTask <String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         try {
-            HttpURLConnection httpConn = OpenHTTP.prepareConnection("http://192.168.77.17/kmpApi/checkAndroidID.php");
+            HttpURLConnection httpConn = OpenHTTP.prepareConnection("");
             String json = "{ \"androidID\": \"" + strings[0] + "\" }";
             RequestHTTP.sendData(json, httpConn);
             return RequestHTTP.receiveData(httpConn);
