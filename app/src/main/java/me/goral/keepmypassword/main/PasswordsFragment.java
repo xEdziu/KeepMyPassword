@@ -120,7 +120,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
 
     private void setHeader(TableLayout table){
         TableRow tr_head = new TableRow(getActivity());
-        tr_head.setBackgroundColor(Color.RED);
+        tr_head.setBackgroundColor(Color.parseColor("#F44336"));
         tr_head.setBackgroundResource(R.drawable.row_border_header);
         tr_head.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
@@ -198,7 +198,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         number.setTextSize(15);
         number.setGravity(Gravity.CENTER);
         number.setPadding(5, 5, 5, 5);
-        number.setTextColor(Color.WHITE);
+        number.setTextColor(Color.BLACK);
         tr.addView(number);
 
         TextView description = new TextView(getActivity());
@@ -207,7 +207,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         description.setText(desc);
         description.setGravity(Gravity.CENTER);
         description.setPadding(5, 5, 5, 5);
-        description.setTextColor(Color.WHITE);
+        description.setTextColor(Color.BLACK);
         tr.addView(description);
 
         TextView password = new TextView(getActivity());
@@ -216,7 +216,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         password.setText(pwd);
         password.setGravity(Gravity.CENTER);
         password.setPadding(5, 5, 5, 5);
-        password.setTextColor(Color.WHITE);
+        password.setTextColor(Color.BLACK);
         tr.addView(password);
 
         Button btnDelete = new Button(getActivity());

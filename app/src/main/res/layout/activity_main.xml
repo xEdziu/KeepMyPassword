@@ -9,33 +9,33 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="110dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginHorizontal="@android:dimen/app_icon_size"
         android:layout_marginTop="25sp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/login"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnRegistrationDB"
-        app:layout_constraintHorizontal_bias="0.454"
+        android:textColor="@color/textIcons"
+        app:layout_constraintBottom_toTopOf="@id/btnRegistrationDB"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.931" />
 
     <Button
         android:id="@+id/btnRegistrationDB"
-        android:layout_width="110dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginHorizontal="@android:dimen/app_icon_size"
         android:layout_marginTop="25sp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/register"
-        android:textColor="@color/text"
+        android:textColor="@color/textIcons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <TextView
         android:id="@+id/welcomeMessage"
@@ -44,15 +44,17 @@
         android:layout_marginTop="250dp"
         android:layout_marginBottom="30sp"
         android:gravity="center"
+        android:paddingStart="@android:dimen/app_icon_size"
+        android:paddingEnd="@android:dimen/app_icon_size"
         android:text="@string/welcomeMessage"
-        android:textColor="@color/text"
+        android:textColor="@color/primaryText"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintVertical_bias="0.716" />
 
     <ImageView
         android:id="@+id/logoView"
@@ -62,16 +64,18 @@
         android:layout_marginBottom="15sp"
         app:layout_constraintBottom_toTopOf="@+id/welcomeMessage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewBackgroundWelcome"
-        app:srcCompat="@drawable/ic_baseline_lock_24_grey"
+        app:layout_constraintVertical_bias="0.529"
+        app:srcCompat="@mipmap/ic_launcher_round"
         tools:ignore="ContentDescription" />
 
     <View
         android:id="@+id/viewBackgroundWelcome"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textColor="@color/text"
+        android:textColor="@color/textIcons"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/viewBackgroundWelcome"

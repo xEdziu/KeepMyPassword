@@ -23,8 +23,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/black"
             android:id="@+id/toolbar"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight"
             android:elevation="4dp"/>
         <FrameLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/colorBackground"
-        app:itemTextColor="@color/text"
+        app:itemTextColor="@color/primaryText"
         android:id="@+id/nav_view"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"/>

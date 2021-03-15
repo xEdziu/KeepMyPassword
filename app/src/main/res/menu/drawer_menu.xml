@@ -7,28 +7,31 @@
     <group android:checkableBehavior="single">
         <item android:name="android:itemTextApearance"
             android:id="@+id/nav_passwords"
-            android:icon="@drawable/ic_lock_open_white_24"
+            android:icon="@drawable/ic_lock_open_black_24"
             android:title="@string/myPasswords" >@style/menuTextColor</item>
         <item android:name="android:itemTextApearance"
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings_white_24"
+            android:icon="@drawable/ic_settings_black_24"
             android:title="@string/settings" >@style/menuTextColor</item>
         <item android:name="android:itemTextApearance"
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_info_white_24"
+            android:icon="@drawable/ic_info_black_24"
             android:title="@string/about" >@style/menuTextColor</item>
         <item android:name="android:itemTextApearance"
             android:id="@+id/nav_credits"
-            android:icon="@drawable/ic_person_white_24"
+            android:icon="@drawable/ic_exit_black_24"
             android:title="@string/credits" >@style/menuTextColor</item>
     </group>
 
-    <item android:title="@string/log_out">
+    <item android:title="@string/log_out"
+        android:name="android:itemTextApearance">
         <menu>
-            <item android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_exit_white_24"
-                android:title="@string/log_out" />
+            <item
+                android:name="android:itemTextApearance"
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_exit_black_24"
+                android:title="@string/log_out" >@style/menuTextColor</item>
         </menu>
 
-    </item>
+        @style/menuTextColor</item>
 </menu>

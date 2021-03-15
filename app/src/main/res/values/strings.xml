@@ -24,4 +24,5 @@
     <string name="number">NO.</string>
     <string name="delete">DELETE</string>
     <string name="refresh">Refresh</string>
+    <string name="version">Version: 1.0.8</string>
 </resources>

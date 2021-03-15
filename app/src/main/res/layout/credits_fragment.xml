@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="@string/credits"
         android:textStyle="bold"
-        android:textColor="@color/text"
+        android:textColor="@color/primaryText"
         android:textSize="30sp"
         android:layout_centerInParent="true" />
 </RelativeLayout>
