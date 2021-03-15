@@ -51,6 +51,16 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         table = view.findViewById(R.id.table);
         setHeader(table);
         setContent();
+        //refresh screen
+        Button btnRefresh = view.findViewById(R.id.refreshButton);
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(f).attach(f).commit();
+            }
+        });
 
         //add another password
         Button btnAdd = view.findViewById(R.id.addButton);
@@ -85,7 +95,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                                 @Override
                                 public void processFinish(String output) {
                                     String[] result = output.split(";");
-                                    Toast.makeText(getActivity(), result[1], Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 }
                             });
@@ -93,9 +103,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                             async.setParentActivity(parentActivity);
                             async.execute(params);
                         }
-                        Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.detach(f).attach(f).commit();
+
                     }
                 });
                 alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -164,7 +172,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                     }
 
                 } else
-                    Toast.makeText(getActivity(), "You have no passwords stored yet. Try to add one by clicking this blue button!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "You have no passwords stored yet. Try to add one by clicking this blue button!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -240,18 +248,11 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void processFinish(String output) {
                         String[] result = output.split(";");
-                        Toast.makeText(getActivity(), result[1], Toast.LENGTH_LONG).show();
-                        Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.detach(f).attach(f).commit();
+                        Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
                     }
                 });
                 async.setParentActivity(getActivity());
                 async.execute(btnId);
-
-                Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(f).attach(f).commit();
             }
         });
         alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
