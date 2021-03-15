@@ -18,4 +18,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="applogo">AppLogo</string>
     <string name="log_out">Log out</string>
+    <string name="addButtonPlus">+</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="passwordLabel">PASSWORD</string>
+    <string name="number">NO.</string>
+    <string name="delete">DELETE</string>
 </resources>

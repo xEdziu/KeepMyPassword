@@ -4,7 +4,10 @@ package me.goral.keepmypassword.main;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -32,7 +35,6 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         uid = bundle.getString("uid");
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,8 +48,10 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
         toggle.syncState();
 
         if (savedInstanceState == null){
+            PasswordsFragment pf = new PasswordsFragment();
+            pf.setArguments(generateFragmentBundle(username, uid));
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new PasswordsFragment()).commit();
+                    pf, "PasswordFragment").commit();
             navigationView.setCheckedItem(R.id.nav_passwords);
         }
     }
@@ -94,7 +98,7 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     private Bundle generateFragmentBundle(String username, String uid){
         Bundle bundle = new Bundle();
         bundle.putString("username", username);
-        bundle.putString("username", uid);
+        bundle.putString("uid", uid);
         return bundle;
     }
 }

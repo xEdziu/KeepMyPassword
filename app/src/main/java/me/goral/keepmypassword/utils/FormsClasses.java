@@ -28,6 +28,17 @@ public class FormsClasses {
             this.androidID = androidID;
         }
     }
+    public static class SetContentParams {
+        public String uid;
+        public String description;
+        public String password;
+
+        public SetContentParams(String uid, String description, String password) {
+            this.uid = uid;
+            this.description = description;
+            this.password = password;
+        }
+    }
 }
 
 
