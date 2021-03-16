@@ -190,3 +190,53 @@ This unique fragment is responsible for changing Theme preferences - Dark Mode, 
 ![Dark Theme Screenshot](https://github.com/xEdziu/KeepMyPassword/blob/main/dark.png)
 ![Light Theme Screenshot](https://github.com/xEdziu/KeepMyPassword/blob/main/light.png)
 
+As well as deleting passwords and user account from database.
+For full code visit page with file ```SettingsFragment.java```
+
+#### AsyncTasks
+
+Each AsyncTask file is responsible for creating connection with external server using ```OpenHTTP.class```, and then sending POST request and recieving callback from external server using ```RequestHTTP.java``` class:
+
+```java
+public class RequestHTTP {
+    //sending request
+    public static void sendData(String json, HttpURLConnection urlConnection){
+        try(OutputStream os = urlConnection.getOutputStream()) {
+            byte[] input = json.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //recieving data from request
+    public static String receiveData(HttpURLConnection urlConnection){
+        try(BufferedReader br = new BufferedReader(
+                new InputStreamReader(urlConnection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            return response.toString();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+````
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Contact
+
+You can contact me via email: 
+<adrian.goral@gmail.com>
+
+## License
+KeepMyPassword by Adrian Goral is licensed under Attribution-NonCommercial-NoDerivatives 4.0 International.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
