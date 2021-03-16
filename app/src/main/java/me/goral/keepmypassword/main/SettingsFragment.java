@@ -62,7 +62,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-                alert.setTitle("Are you sure?This action cannot be undone.");
+                alert.setTitle("This action cannot be undone.");
                 alert.setMessage("Are you sure?");
                 alert.setPositiveButton("YES, DELETE PASSWORDS", new DialogInterface.OnClickListener() {
                     @Override
