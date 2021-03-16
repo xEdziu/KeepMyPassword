@@ -119,7 +119,7 @@ btnLogin.setOnClickListener(new View.OnClickListener() {
 final EditText userNameEditText = findViewById(R.id.loginUsername);
 String username = String.valueOf(userNameEditText.getText());
 ```
-* And pass values them to files responsible for handling asynchronous tasks: ```LoginDB.java``` and ```RegisterDB.java```:
+* And pass values to files responsible for handling asynchronous tasks: ```LoginDB.java``` and ```RegisterDB.java```:
 
 ```java
 LoginDB async = //...
