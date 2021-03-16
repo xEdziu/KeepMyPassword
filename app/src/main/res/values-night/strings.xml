@@ -38,9 +38,9 @@
         to break into database and steal valuable informations. Even if someone would like to break into database, everyones
         passwords will be imidietely deleted.</string>
     <string name="about_third_header">What if I do not have stable internet connection?</string>
-    <string name="about_third_paragraph">Do not worry. This app is developed to work both in online and offline mode.
+    <string name="about_third_paragraph">Do not worry. This app is being developed towards working both in online and offline mode.
     When you are online, your data is passed to online server. When you are out of internet connection all passwords will be
-    stored in local version of database on your device, but some options will require to be online.</string>
+    stored in local version of database on your device, but some options like Deleting your Account will require to be online.</string>
     <string name="about_fourth_header">Author</string>
     <string name="about_fourth_paragraph">My name is Adrian Goral. I am 19 years old and I am from Poland. I am passionate about software developing
     and I want to connect my future with it. Feel free to visit my GitHub page: https://github.com/xEdziu</string>
