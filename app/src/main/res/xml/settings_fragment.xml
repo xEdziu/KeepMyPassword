@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="visibility_category"
+        android:title="Visibility">
+
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_light_mode_24"
+            android:key="switch_day_night"
+            android:summary="@string/theme"
+            android:title="Theme" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="account_category"
+        android:title="Account">
+
+        <Preference
+            android:icon="@drawable/ic_delete_24"
+            android:key="delete_passwords"
+            android:summary="Delete all passwords that are \nconnected to your account"
+            android:title="Delete passwords" />
+
+        <Preference
+            android:icon="@drawable/ic_no_account_24"
+            android:key="delete_account"
+            android:summary="Completly delete your account"
+            android:title="Delete account" />
+    </PreferenceCategory>
+</PreferenceScreen>

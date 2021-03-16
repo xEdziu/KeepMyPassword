@@ -3,6 +3,8 @@ package me.goral.keepmypassword.auth.forms;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +41,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
         Bundle bundle = getIntent().getExtras();
 
+        final String actionBarColor = bundle.getString("colorString");
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(actionBarColor));
+
         final ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 

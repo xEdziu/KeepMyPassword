@@ -5,33 +5,44 @@
 
 
     <group android:checkableBehavior="single">
-        <item android:name="android:itemTextApearance"
+        <item
             android:id="@+id/nav_passwords"
+            android:name="android:itemTextApearance"
             android:icon="@drawable/ic_lock_open_black_24"
-            android:title="@string/myPasswords" >@style/menuTextColor</item>
-        <item android:name="android:itemTextApearance"
+            android:title="@string/myPasswords">@style/menuTextColor
+        </item>
+        <item
             android:id="@+id/nav_settings"
+            android:name="android:itemTextApearance"
             android:icon="@drawable/ic_settings_black_24"
-            android:title="@string/settings" >@style/menuTextColor</item>
-        <item android:name="android:itemTextApearance"
+            android:title="@string/settings">@style/menuTextColor
+        </item>
+        <item
             android:id="@+id/nav_about"
+            android:name="android:itemTextApearance"
             android:icon="@drawable/ic_info_black_24"
-            android:title="@string/about" >@style/menuTextColor</item>
-        <item android:name="android:itemTextApearance"
+            android:title="@string/about">@style/menuTextColor
+        </item>
+        <item
             android:id="@+id/nav_credits"
-            android:icon="@drawable/ic_exit_black_24"
-            android:title="@string/credits" >@style/menuTextColor</item>
+            android:name="android:itemTextApearance"
+            android:icon="@drawable/ic_person_black_24"
+            android:title="@string/credits">@style/menuTextColor
+        </item>
     </group>
 
-    <item android:title="@string/log_out"
-        android:name="android:itemTextApearance">
+    <item
+        android:name="android:itemTextApearance"
+        android:title="@string/log_out">
         <menu>
             <item
-                android:name="android:itemTextApearance"
                 android:id="@+id/nav_logout"
+                android:name="android:itemTextApearance"
                 android:icon="@drawable/ic_exit_black_24"
-                android:title="@string/log_out" >@style/menuTextColor</item>
+                android:title="@string/log_out">@style/menuTextColor
+            </item>
         </menu>
 
-        @style/menuTextColor</item>
+        @style/menuTextColor
+    </item>
 </menu>

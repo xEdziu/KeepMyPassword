@@ -40,7 +40,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.passwords_fragment, container, false);
 
         Bundle bundle = getArguments();
@@ -130,7 +130,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         labelNum.setText(R.string.number);
         labelNum.setTextSize(20);
         labelNum.setGravity(Gravity.CENTER);
-        labelNum.setTextColor(Color.WHITE);
+        labelNum.setTextColor(Color.BLACK);
         labelNum.setPadding(10,10,10,10);
         tr_head.addView(labelNum);
 
@@ -138,7 +138,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         labelDesc.setText(R.string.description);
         labelDesc.setTextSize(20);
         labelDesc.setGravity(Gravity.CENTER);
-        labelDesc.setTextColor(Color.WHITE);
+        labelDesc.setTextColor(Color.BLACK);
         labelDesc.setPadding(5,5,5,5);
         tr_head.addView(labelDesc);
 
@@ -146,7 +146,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         labelPass.setText(R.string.passwordLabel);
         labelPass.setTextSize(20);
         labelPass.setGravity(Gravity.CENTER);
-        labelPass.setTextColor(Color.WHITE);
+        labelPass.setTextColor(Color.BLACK);
         labelPass.setPadding(5,5,5,5);
         tr_head.addView(labelPass);
 
@@ -198,7 +198,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         number.setTextSize(15);
         number.setGravity(Gravity.CENTER);
         number.setPadding(5, 5, 5, 5);
-        number.setTextColor(Color.BLACK);
         tr.addView(number);
 
         TextView description = new TextView(getActivity());
@@ -207,7 +206,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         description.setText(desc);
         description.setGravity(Gravity.CENTER);
         description.setPadding(5, 5, 5, 5);
-        description.setTextColor(Color.BLACK);
         tr.addView(description);
 
         TextView password = new TextView(getActivity());
@@ -216,7 +214,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         password.setText(pwd);
         password.setGravity(Gravity.CENTER);
         password.setPadding(5, 5, 5, 5);
-        password.setTextColor(Color.BLACK);
         tr.addView(password);
 
         Button btnDelete = new Button(getActivity());
@@ -224,7 +221,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         btnDelete.setId(idV);
         btnDelete.setBackgroundResource(R.drawable.btn_delete);
         btnDelete.setPadding(5, 5, 5, 5);
-        btnDelete.setTextColor(Color.WHITE);
         btnDelete.setTextSize(15);
         btnDelete.setOnClickListener(this);
         tr.addView(btnDelete);
