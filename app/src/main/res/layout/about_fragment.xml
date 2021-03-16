@@ -1,16 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
     android:background="@color/colorBackground">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/about"
-        android:textStyle="bold"
-        android:textColor="@color/primaryText"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
-</RelativeLayout>
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imgLogo"
+                android:layout_margin="30dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/applogo" />
+
+            <TextView
+                android:id="@+id/about_first_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/imgLogo"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:text="@string/about_first_header"
+                android:textColor="@color/colorLightPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/about_first_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_first_header"
+                android:layout_alignParentStart="true"
+                android:padding="12dp"
+                android:text="@string/about_first_paragraph"
+                android:textColor="@color/primaryText"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/about_second_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_first_paragraph"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:text="@string/about_second_header"
+                android:textColor="@color/colorLightPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/about_second_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_second_header"
+                android:layout_alignParentStart="true"
+                android:padding="12dp"
+                android:text="@string/about_second_paragraph"
+                android:textColor="@color/primaryText"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/about_third_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_second_paragraph"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:text="@string/about_third_header"
+                android:textColor="@color/colorLightPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/about_third_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_third_header"
+                android:layout_alignParentStart="true"
+                android:padding="12dp"
+                android:text="@string/about_third_paragraph"
+                android:textColor="@color/primaryText"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/about_fourth_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_third_paragraph"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:text="@string/about_fourth_header"
+                android:textColor="@color/colorLightPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/about_fourth_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_fourth_header"
+                android:layout_alignParentStart="true"
+                android:padding="12dp"
+                android:text="@string/about_fourth_paragraph"
+                android:textColor="@color/primaryText"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/about_fifth_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_fourth_paragraph"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:text="@string/about_fifth_header"
+                android:textColor="@color/colorLightPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/about_fifth_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_fifth_header"
+                android:layout_alignParentStart="true"
+                android:padding="12dp"
+                android:text="@string/about_fifth_paragraph"
+                android:textColor="@color/primaryText"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -35,11 +35,12 @@ public class RegistrationDB extends AsyncTask<FormsClasses.RegisterParams, Void,
 
     }
 
-    public void clearInputs(EditText username, EditText email, EditText password){
+    public void clearInputs(EditText username, EditText email, EditText password, EditText password2){
         username.setText("");
         email.setText("");
         password.setText("");
-        password.clearFocus();
+        password2.setText("");
+        password2.clearFocus();
     }
 
     @Override
@@ -47,7 +48,7 @@ public class RegistrationDB extends AsyncTask<FormsClasses.RegisterParams, Void,
         parentActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
               WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         super.onPreExecute();
-        clearInputs(username, email, password);
+        clearInputs(username, email, password, password2);
         pb.setVisibility(View.VISIBLE);
     }
 

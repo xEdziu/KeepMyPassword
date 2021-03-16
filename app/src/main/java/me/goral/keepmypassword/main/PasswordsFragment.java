@@ -3,6 +3,7 @@ package me.goral.keepmypassword.main;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -37,11 +38,18 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
     private View view;
     private TableLayout table;
     private String btnId;
+    private SharedPreferences sharedPreferences;
+    private Boolean flag;
+    private String colorStringHeader;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.passwords_fragment, container, false);
+
+        sharedPreferences = getActivity().getSharedPreferences("night", 0);
+        flag = sharedPreferences.getBoolean("night_mode", false);
+        colorStringHeader = "#FFFFFF";
 
         Bundle bundle = getArguments();
         if (bundle != null){
@@ -56,9 +64,15 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(f).attach(f).commit();
+                if (getFragmentManager() != null){
+                    try {
+                        Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.detach(f).attach(f).commit();
+                    } catch (Exception e){
+                        getActivity().recreate();
+                    }
+                }
             }
         });
 
@@ -129,8 +143,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         TextView labelNum = new TextView(getActivity());
         labelNum.setText(R.string.number);
         labelNum.setTextSize(20);
-        labelNum.setGravity(Gravity.CENTER);
-        labelNum.setTextColor(Color.BLACK);
         labelNum.setPadding(10,10,10,10);
         tr_head.addView(labelNum);
 
@@ -138,7 +150,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         labelDesc.setText(R.string.description);
         labelDesc.setTextSize(20);
         labelDesc.setGravity(Gravity.CENTER);
-        labelDesc.setTextColor(Color.BLACK);
         labelDesc.setPadding(5,5,5,5);
         tr_head.addView(labelDesc);
 
@@ -146,7 +157,6 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         labelPass.setText(R.string.passwordLabel);
         labelPass.setTextSize(20);
         labelPass.setGravity(Gravity.CENTER);
-        labelPass.setTextColor(Color.BLACK);
         labelPass.setPadding(5,5,5,5);
         tr_head.addView(labelPass);
 

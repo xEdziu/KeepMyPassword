@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -68,7 +69,7 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             PasswordsFragment pf = new PasswordsFragment();
             pf.setArguments(generateFragmentBundle(username, uid));
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -76,19 +77,22 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
             navigationView.setCheckedItem(R.id.nav_passwords);
         }
     }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_passwords:
                 PasswordsFragment pf = new PasswordsFragment();
                 pf.setArguments(generateFragmentBundle(username, uid));
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                pf).commit();
+                        pf).commit();
                 break;
             case R.id.nav_settings:
+                SettingsFragment sf = new SettingsFragment();
+                sf.setArguments(generateFragmentBundle(username, uid));
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
+                        sf).commit();
                 break;
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -112,10 +116,11 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else Toast.makeText(getApplicationContext(), "To log out, use button in the menu", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(getApplicationContext(), "To log out, use button in the menu", Toast.LENGTH_LONG).show();
     }
 
-    private Bundle generateFragmentBundle(String username, String uid){
+    private Bundle generateFragmentBundle(String username, String uid) {
         Bundle bundle = new Bundle();
         bundle.putString("username", username);
         bundle.putString("uid", uid);

@@ -12,19 +12,47 @@
     <string name="myPasswords">My passwords</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
-    <string name="credits">Credits</string>
+    <string name="credits">Acknowledgements</string>
     <string name="author">Adrian Goral</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="applogo">AppLogo</string>
     <string name="log_out">Log out</string>
     <string name="addButtonPlus">+</string>
-    <string name="description">DESCRIPTION</string>
-    <string name="passwordLabel">PASSWORD</string>
-    <string name="number">NO.</string>
+    <string name="description">Description</string>
+    <string name="passwordLabel">Password</string>
+    <string name="number">No.</string>
     <string name="delete">DELETE</string>
     <string name="refresh">Refresh</string>
-    <string name="version">Version: 1.0.9</string>
+    <string name="version">Version: 1.1.0</string>
     <string name="theme">Light Mode</string>
     <string name="welcome">Welcome</string>
+
+    <string name="about_first_header">@string/app_name</string>
+    <string name="about_first_paragraph">This application is designed to store all passwords that you cannot keep no longer in your head!
+    No more notes scattered around your home, no more remembering all the digits and special characters!
+    Now, thanks to KeepMyPassword you can store all your passwords in ONE place completly for free! </string>
+    <string name="about_second_header">Is it secure to store my passwords in this app?</string>
+    <string name="about_second_paragraph">Yes! All paswords are encrypted and securely stored. There is a little chance for hackers
+        to break into database and steal valuable informations. Even if someone would like to break into database, everyones
+        passwords will be imidietely deleted.</string>
+    <string name="about_third_header">What if I do not have stable internet connection?</string>
+    <string name="about_third_paragraph">Do not worry. This app is developed to work both in online and offline mode.
+    When you are online, your data is passed to online server. When you are out of internet connection all passwords will be
+    stored in local version of database on your device, but some options will require to be online.</string>
+    <string name="about_fourth_header">Author</string>
+    <string name="about_fourth_paragraph">My name is Adrian Goral. I am 19 years old and I am from Poland. I am passionate about software developing
+    and I want to connect my future with it. Feel free to visit my GitHub page: https://github.com/xEdziu</string>
+    <string name="about_fifth_header">Contact</string>
+    <string name="about_fifth_paragraph">You can contact me via email: adrian.goral@gmail.com or you can find me on Discord: xEdziu#2123</string>
+    <string name="about_sixth_header">License</string>
+    <string name="about_sixth_paragraph">KeepMyPassword by Adrian Goral is licensed under Attribution-NonCommercial-NoDerivatives 4.0 International.
+    To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/</string>
+
+    <string name="credits_header">Big thanks to:</string>
+    <string name="credits_one">- Marta Rogin - for the first impression of the User Interface</string>
+    <string name="credits_two">- Kamil Troczewski - for sitting for so many long hours with me while I was coding</string>
+    <string name="credits_three">- Damian Wagiła, Grzegorz Petri, Michał Piekutowski and Jakub Przybysz - for invaluable help while I was struggling with code</string>
+    <string name="credits_four">- Dominik Pyka - for keeping your fingers crossed and being the very first person to watch how my app evolves</string>
+
 </resources>
