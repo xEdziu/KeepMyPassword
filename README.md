@@ -35,10 +35,12 @@ It's eniterly created from scrap and developed to version 1.1.0 in one month fro
 
 I decided to omit XML layouts file, because they are easily asccesible in ```res``` folder.
 
+> Note: Below there are described only the most essential files that fulfill specific function that identifies its' usage from other files.
+
 #### MainActivity.java
 
-The landing file is responsible for:
-* Reading unique AndroidID and saving it into variable:
+The first activity file when App is opened is responsible for:
+* Reading unique **AndroidID** and saving it into variable:
 
 ```java
 final String android_id;
@@ -68,6 +70,7 @@ ActionBar actionBar = getSupportActionBar();
 actionBar.setDisplayShowTitleEnabled(true);
 actionBar.setBackgroundDrawable(colorDrawable);
 ```
+
 * Checking if App can use permissions and if not - asks for them:
 
 ```java
@@ -81,11 +84,11 @@ if (ContextCompat.checkSelfPermission(MainActivity.this,
         new String[]{Manifest.permission.USE_BIOMETRIC}, 1);
 }
 ```
+
 * Redirecting to login and register forms with extra arguments in bundle:
 
 ```java
 // redirect to register form
-Button btnRegister = findViewById(R.id.btnRegistrationDB);
 btnRegister.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -97,7 +100,6 @@ btnRegister.setOnClickListener(new View.OnClickListener() {
 });
 
 //redirect to login form
-Button btnLogin = findViewById(R.id.btnLogin);
 btnLogin.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -109,6 +111,81 @@ btnLogin.setOnClickListener(new View.OnClickListener() {
 });
 ```
 
+#### Login.java & Register.Java
 
+* Both this files fulfill a similar function - collect data from EditTexts, e.g.:
+
+```java
+final EditText userNameEditText = findViewById(R.id.loginUsername);
+String username = String.valueOf(userNameEditText.getText());
+```
+* And pass values them to files responsible for handling asynchronous tasks: ```LoginDB.java``` and ```RegisterDB.java```:
+
+```java
+LoginDB async = //...
+async.execute(params);
+```
+* For more information, look at ```Login.java``` or ```Register.java``` file.
+
+#### LoggedMain.java
+
+* This is the main activity after logging in.
+
+* It has special ```<FrameLayout>``` tag that holds and displays Fragments (```AboutFragment.java``` and so on) iniside this tag:
+
+```xml
+<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container">
+</FrameLayout>
+```
+
+* Moreover it hosts whole **Navigation Drawer** and uses ```switch``` function to change currently displayed Fragments :
+
+```xml
+<com.google.android.material.navigation.NavigationView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/colorBackground"
+    app:itemTextColor="@color/primaryText"
+    android:id="@+id/nav_view"
+    app:headerLayout="@layout/nav_header"
+    app:menu="@menu/drawer_menu"/>
+```
+
+```java
+drawer = findViewById(R.id.drawer_layout);
+NavigationView navigationView = findViewById(R.id.nav_view);
+navigationView.setNavigationItemSelectedListener(this);
+
+ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+    R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+drawer.addDrawerListener(toggle);
+toggle.syncState();
+```
+For ```switch``` usage look into ```LoggedMain.java``` file.
+
+#### PasswordsFragment.java
+
+This file generates main feature of the App - Descriptions and Passwords storaged in external database.
+
+> Note: Offline mode not suported yet! (Status for 16.03.2021)
+
+* Main functionality is to generate header, content and buttons to refresh content, add and delete records to and from database:
+
+```java
+table = view.findViewById(R.id.table);
+setHeader(table);
+setContent();
+```
+
+Buttons are sending asynchronous requests to perform intended action.
+For full body of functions and buttons funcionality look into ```PasswordsFragment.java``` file.
+
+#### SettingsFragment.java
+
+This unique fragment is responsible for changing Theme preferences - Dark Mode, Night Mode:
 
 
