@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
+
+import com.vdx.designertoast.DesignerToast;
 
 import java.util.concurrent.Executor;
 
@@ -78,7 +81,7 @@ public class Login extends AppCompatActivity {
                             intent.putExtra("uid", databaseId);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
+                            DesignerToast.Warning(getApplicationContext(), "Warning", output, Gravity.BOTTOM, Toast.LENGTH_SHORT, DesignerToast.STYLE_DARK);
                         }
                     }
                 });
@@ -126,8 +129,9 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void processFinish(String output) {
                         String[] result = output.split(";");
-                        if (!result[0].equals("TRUE")) Toast.makeText(getApplicationContext(), "Biometric authentication is now unavailable." +
-                                " Please login using username and password", Toast.LENGTH_LONG).show();
+                        if (!result[0].equals("TRUE")) DesignerToast.Info(getApplicationContext(), "Info",
+                                "Biometric authentication is now unavailable." +
+                                " Please login using username and password", Gravity.BOTTOM, Toast.LENGTH_SHORT, DesignerToast.STYLE_DARK);
                         else {
                             databaseUser = result[1];
                             databaseId = result[2];

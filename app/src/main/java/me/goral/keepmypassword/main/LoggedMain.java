@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.google.android.material.navigation.NavigationView;
+import com.vdx.designertoast.DesignerToast;
 
 import me.goral.keepmypassword.MainActivity;
 import me.goral.keepmypassword.R;
@@ -117,7 +119,7 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
         else
-            Toast.makeText(getApplicationContext(), "To log out, use button in the menu", Toast.LENGTH_LONG).show();
+            DesignerToast.Info(getApplicationContext(), "INFO", "To log out, use button in the menu", Gravity.BOTTOM, Toast.LENGTH_SHORT, DesignerToast.STYLE_DARK);
     }
 
     private Bundle generateFragmentBundle(String username, String uid) {
