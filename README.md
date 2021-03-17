@@ -187,8 +187,7 @@ For full body of functions and buttons funcionality look into ```PasswordsFragme
 #### SettingsFragment.java
 
 This unique fragment is responsible for changing Theme preferences - Dark Mode, Night Mode:
-![Dark Theme Screenshot](https://github.com/xEdziu/KeepMyPassword/blob/main/dark.png)
-![Light Theme Screenshot](https://github.com/xEdziu/KeepMyPassword/blob/main/light.png)
+![Whole Themes Screenshot](https://github.com/xEdziu/KeepMyPassword/blob/main/whole.png)
 
 As well as deleting passwords and user account from database.
 For full code visit page with file ```SettingsFragment.java```
