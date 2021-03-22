@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import java.net.HttpURLConnection;
 
+import me.goral.keepmypassword.utils.Toasts;
 import me.goral.keepmypassword.utils.asyncTasks.functions.OpenHTTP;
 import me.goral.keepmypassword.utils.asyncTasks.functions.RequestHTTP;
 import me.goral.keepmypassword.utils.FormsClasses;
@@ -72,7 +73,11 @@ public class RegistrationDB extends AsyncTask<FormsClasses.RegisterParams, Void,
     @Override
     protected void onPostExecute(String s) {
         pb.setVisibility(View.GONE);
-        Toast.makeText(parentActivity, s, Toast.LENGTH_SHORT).show();
+        String[] result = s.split(";");
+        if (result[0].equals("true"))
+            Toasts.makeSuccessToast(result[1], parentActivity);
+        else
+            Toasts.makeErrorToast(result[1], parentActivity);
         parentActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         super.onPostExecute(s);
     }

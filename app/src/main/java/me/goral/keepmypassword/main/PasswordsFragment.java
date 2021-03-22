@@ -18,6 +18,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,11 +29,12 @@ import java.security.PrivateKey;
 
 import me.goral.keepmypassword.R;
 import me.goral.keepmypassword.utils.FormsClasses;
+import me.goral.keepmypassword.utils.Toasts;
 import me.goral.keepmypassword.utils.asyncTasks.DeleteIndividualContentDB;
 import me.goral.keepmypassword.utils.asyncTasks.GetContentDB;
 import me.goral.keepmypassword.utils.asyncTasks.SetContentDB;
 
-public class PasswordsFragment extends Fragment implements View.OnClickListener{
+public class PasswordsFragment extends Fragment implements View.OnClickListener {
 
     private String uid;
     private View view;
@@ -52,7 +54,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         colorStringHeader = "#FFFFFF";
 
         Bundle bundle = getArguments();
-        if (bundle != null){
+        if (bundle != null) {
             uid = bundle.getString("uid");
         }
         //set content data
@@ -64,12 +66,12 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getFragmentManager() != null){
+                if (getFragmentManager() != null) {
                     try {
                         Fragment f = getFragmentManager().findFragmentByTag("PasswordFragment");
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.detach(f).attach(f).commit();
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         getActivity().recreate();
                     }
                 }
@@ -100,8 +102,8 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                     public void onClick(final DialogInterface dialog, int which) {
                         String desc = inputDesc.getText().toString().trim();
                         String pwd = inputPassword.getText().toString().trim();
-                        if  (desc.isEmpty() || pwd.isEmpty())
-                            Toast.makeText(getActivity(), "Description or password can't be empty", Toast.LENGTH_LONG).show();
+                        if (desc.isEmpty() || pwd.isEmpty())
+                            Toasts.makeWarningToast("Description or password can't be empty", getActivity());
                         else {
 
                             FormsClasses.SetContentParams params = new FormsClasses.SetContentParams(uid, desc, pwd);
@@ -109,7 +111,10 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                                 @Override
                                 public void processFinish(String output) {
                                     String[] result = output.split(";");
-                                    Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
+                                    if (result[0].equals("true"))
+                                        Toasts.makeSuccessToast(result[1], getActivity());
+                                    else
+                                        Toasts.makeErrorToast(result[1], getActivity());
                                     dialog.dismiss();
                                 }
                             });
@@ -132,7 +137,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    private void setHeader(TableLayout table){
+    private void setHeader(TableLayout table) {
         TableRow tr_head = new TableRow(getActivity());
         tr_head.setBackgroundColor(Color.parseColor("#F44336"));
         tr_head.setBackgroundResource(R.drawable.row_border_header);
@@ -143,21 +148,21 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
         TextView labelNum = new TextView(getActivity());
         labelNum.setText(R.string.number);
         labelNum.setTextSize(20);
-        labelNum.setPadding(10,10,10,10);
+        labelNum.setPadding(10, 10, 10, 10);
         tr_head.addView(labelNum);
 
         TextView labelDesc = new TextView(getActivity());
         labelDesc.setText(R.string.description);
         labelDesc.setTextSize(20);
         labelDesc.setGravity(Gravity.CENTER);
-        labelDesc.setPadding(5,5,5,5);
+        labelDesc.setPadding(5, 5, 5, 5);
         tr_head.addView(labelDesc);
 
         TextView labelPass = new TextView(getActivity());
         labelPass.setText(R.string.passwordLabel);
         labelPass.setTextSize(20);
         labelPass.setGravity(Gravity.CENTER);
-        labelPass.setPadding(5,5,5,5);
+        labelPass.setPadding(5, 5, 5, 5);
         tr_head.addView(labelPass);
 
         table.addView(tr_head, new TableLayout.LayoutParams(
@@ -165,24 +170,23 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                 TableRow.LayoutParams.WRAP_CONTENT));
     }
 
-    private void setContent(){
+    private void setContent() {
         final ProgressBar pb = view.findViewById(R.id.progressBarPassword);
         GetContentDB async = new GetContentDB(new GetContentDB.AsyncResponse() {
             @Override
             public void processFinish(String output) {
-                if(!output.equals("ERR::1")){
+                if (!output.equals("ERR::1")) {
                     String[] row = output.split("#&");
                     String desc, pwd, id;
-                    for (int i = 0; i < row.length; i++){
+                    for (int i = 0; i < row.length; i++) {
                         String[] r = row[i].split(";");
                         desc = r[0];
                         pwd = r[1];
                         id = r[2];
-                        generateRow(table, desc, pwd, id, i );
+                        generateRow(table, desc, pwd, id, i);
                     }
-
                 } else
-                    Toast.makeText(getActivity(), "You have no passwords stored yet. Try to add one by clicking this blue button!", Toast.LENGTH_SHORT).show();
+                    Toasts.makeInfoToast("You have no passwords stored yet. Try to add one by clicking this blue button!", getActivity());
 
             }
         });
@@ -204,7 +208,7 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
 
         TextView number = new TextView(getActivity());
         number.setId(10000 + idV);
-        number.setText(String.valueOf(counter+1));
+        number.setText(String.valueOf(counter + 1));
         number.setTextSize(15);
         number.setGravity(Gravity.CENTER);
         number.setPadding(5, 5, 5, 5);
@@ -254,7 +258,10 @@ public class PasswordsFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void processFinish(String output) {
                         String[] result = output.split(";");
-                        Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
+                        if (result[0].equals("true"))
+                            Toasts.makeSuccessToast(result[1], getActivity());
+                        else
+                            Toasts.makeErrorToast(result[1], getActivity());
                     }
                 });
                 async.setParentActivity(getActivity());

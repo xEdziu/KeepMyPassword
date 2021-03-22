@@ -22,6 +22,7 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import me.goral.keepmypassword.MainActivity;
 import me.goral.keepmypassword.R;
+import me.goral.keepmypassword.utils.Toasts;
 import me.goral.keepmypassword.utils.asyncTasks.ManageAccount;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
@@ -71,7 +72,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                             @Override
                             public void processFinish(String output) {
                                 String[] result = output.split(";");
-                                Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
+                                if (result[0].equals("true"))
+                                    Toasts.makeSuccessToast(result[1], getActivity());
+                                else
+                                    Toasts.makeErrorToast(result[1], getActivity());
                             }
                         });
                         async.setParentActivity(getActivity());
@@ -108,7 +112,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                                     getActivity().finish();
                                     startActivity(intent);
                                 } else
-                                    Toast.makeText(getActivity(), result[1], Toast.LENGTH_SHORT).show();
+                                    Toasts.makeErrorToast(result[1], getActivity());
                             }
                         });
                         async.setParentActivity(getActivity());

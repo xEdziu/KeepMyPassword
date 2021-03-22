@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import me.goral.keepmypassword.MainActivity;
 import me.goral.keepmypassword.R;
+import me.goral.keepmypassword.utils.Toasts;
 import me.goral.keepmypassword.utils.asyncTasks.RegistrationDB;
 import me.goral.keepmypassword.utils.FormsClasses;
 
@@ -56,7 +57,7 @@ public class Register extends AppCompatActivity {
                 String password2 = String.valueOf(password2EditText.getText());
                 //check if passwords are the same
                 if (!password.equals(password2)){
-                    Toast.makeText(getApplicationContext(), "Passwords are not the same!", Toast.LENGTH_SHORT ).show();
+                    Toasts.makeErrorToast("Passwords are not the same!", getApplicationContext());
                     return;
                 }
                 //validate password input
@@ -99,14 +100,14 @@ public class Register extends AppCompatActivity {
                 return true;
         }
 
-        if (!numberFlag) Toast.makeText(getApplicationContext(), "Password have to contain at " +
-                "least 1 number", Toast.LENGTH_SHORT).show();
-        else if (!capitalFlag) Toast.makeText(getApplicationContext(), "Password have to contain at " +
-                "least 1 capital letter", Toast.LENGTH_SHORT).show();
-        else if (!lowerCaseFlag) Toast.makeText(getApplicationContext(), "Password have to contain at " +
-                "least 1 lower case letter", Toast.LENGTH_SHORT).show();
-        else if (!counterFlag) Toast.makeText(getApplicationContext(), "Password have to be at " +
-                "least 8 characters long", Toast.LENGTH_SHORT).show();
+        if (!numberFlag)
+            Toasts.makeErrorToast("Password have to contain at least 1 number", getApplicationContext());
+        else if (!capitalFlag)
+            Toasts.makeErrorToast("Password have to contain at least 1 upper case letter", getApplicationContext());
+        else if (!lowerCaseFlag)
+            Toasts.makeErrorToast("Password have to contain at least 1 lower case letter", getApplicationContext());
+        else if (!counterFlag)
+            Toasts.makeErrorToast("Password have to contain at least 8 characters long", getApplicationContext());
         return false;
     }
 

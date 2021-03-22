@@ -27,6 +27,7 @@ import java.util.concurrent.Executor;
 import me.goral.keepmypassword.MainActivity;
 import me.goral.keepmypassword.R;
 import me.goral.keepmypassword.main.LoggedMain;
+import me.goral.keepmypassword.utils.Toasts;
 import me.goral.keepmypassword.utils.asyncTasks.CheckAndroidID;
 import me.goral.keepmypassword.utils.asyncTasks.LoginDB;
 import me.goral.keepmypassword.utils.FormsClasses;
@@ -81,7 +82,7 @@ public class Login extends AppCompatActivity {
                             intent.putExtra("uid", databaseId);
                             startActivity(intent);
                         } else {
-                            DesignerToast.Warning(getApplicationContext(), "Warning", output, Gravity.BOTTOM, Toast.LENGTH_SHORT, DesignerToast.STYLE_DARK);
+                            Toasts.makeWarningToast(output, context);
                         }
                     }
                 });

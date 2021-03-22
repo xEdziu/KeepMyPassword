@@ -31,6 +31,7 @@ import com.vdx.designertoast.DesignerToast;
 
 import me.goral.keepmypassword.MainActivity;
 import me.goral.keepmypassword.R;
+import me.goral.keepmypassword.utils.Toasts;
 
 public class LoggedMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -119,7 +120,7 @@ public class LoggedMain extends AppCompatActivity implements NavigationView.OnNa
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
         else
-            DesignerToast.Info(getApplicationContext(), "INFO", "To log out, use button in the menu", Gravity.BOTTOM, Toast.LENGTH_SHORT, DesignerToast.STYLE_DARK);
+            Toasts.makeInfoToast("To log out, use button in the menu", getApplicationContext());
     }
 
     private Bundle generateFragmentBundle(String username, String uid) {
