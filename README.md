@@ -20,6 +20,7 @@ It's eniterly created from scrap and developed to version 1.1.0 in one month fro
 *   + ```PasswordsFragment.java```
 *   + ```SettingsFragment.java```
 * _```utils```
+*   + ```Toasts.java```
 *   + ```FormsClasses.java```
 *   + ```_asyncTasks```
 *   +   - ```CheckAndroidID.java```
