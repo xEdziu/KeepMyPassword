@@ -72,7 +72,7 @@ actionBar.setDisplayShowTitleEnabled(true);
 actionBar.setBackgroundDrawable(colorDrawable);
 ```
 
-* Checking if App can use permissions and if not - asks for them:
+* Checking if App has permissions and if not - asks for them:
 
 ```java
 if (ContextCompat.checkSelfPermission(MainActivity.this,
